@@ -17,4 +17,6 @@ Route::get('/', function () {
 Route::get('/profiles', [ProfileController::class, 'index']);
 Route::get('/profile/{id}', [ProfileController::class, 'show']);
 Route::get('/user/{id}/courses', [UserController::class, 'showCourses']);
-Route::get('/courses/{id}/users', [CourseController::class, 'showUsers']);
+Route::get('/course/{id}/users', [CourseController::class, 'showUsers']);
+
+

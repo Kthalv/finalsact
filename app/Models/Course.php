@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,11 +9,18 @@ class Course extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'course_name'
     ];
 
-    public function users()
+
+    protected $guarded = [
+        'user_id'
+    ];
+
+
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }

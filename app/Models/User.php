@@ -1,16 +1,21 @@
 <?php
 
+
 namespace App\Models;
+
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
-class User extends Authenticatable
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Model;
+class User extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +28,7 @@ class User extends Authenticatable
         'password',
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -32,6 +38,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
 
     /**
      * Get the attributes that should be cast.
@@ -45,12 +52,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function userProfile(){
-       return $this->hasOne(Profile::class,'user_id');
+    // Profile relationship (one-to-one)
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
     }
-
-    public function courses(){
+    // Courses relationship (many-to-many)
+    public function courses(): BelongsToMany
+    {
         return $this->belongsToMany(Course::class);
     }
 }

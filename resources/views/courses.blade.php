@@ -9,6 +9,7 @@
 <body>
     <h1>{{ $user->name }}'s Courses</h1>
 
+
     @if($user->courses->isEmpty())
         <p>This user is not enrolled in any courses.</p>
     @else
@@ -18,6 +19,7 @@
             @endforeach
         </ul>
     @endif
+
 
     <a href="/users">Back to Users</a>
 </body>

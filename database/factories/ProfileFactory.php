@@ -19,9 +19,9 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::pluck('id')->unique()->random(),
-            'bio'=>Str::random(5),
-            'school'=>fake()->address()
+            'user_id' => fake()->unique()->randomElement([1,2,3,4,5,6,7,8,9,10]),
+            'bio'=> fake()->sentence(15),
+            'school'=> fake()->address()
         ];
     }
 }

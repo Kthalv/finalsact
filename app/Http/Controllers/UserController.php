@@ -34,7 +34,9 @@ class UserController extends Controller
             abort(404, 'User not found');
         }
        
-        return view('users.courses', compact('user'));
+        return view('courses', compact('user'));
     }
 }
    
+
+

@@ -1,18 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Course;
-use Illuminate\Http\Request;
-
-class CoursesController extends Controller
-{
-    public function courseUsers(Request $request,Course $course){
-        $users = $course->users;
-
-        return view('Course',['users'=>$users,'course'=>$course]);
-    }
-}namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -23,9 +11,9 @@ class CourseController extends Controller
     {
         $course = Course::with('users')->findorFail($id);
    
-        return view('courses.users', [
+        return view('users', [
         'course' => $course,
-        'users' => $course->users,
+        'user' => $course->users,
         ]);
     }
 }

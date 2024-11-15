@@ -8,6 +8,7 @@
 <body>
     <h1>All User Profiles</h1>
 
+
     <ul>
         @foreach($profiles as $profile)
         <li>
